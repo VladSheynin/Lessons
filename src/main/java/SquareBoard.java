@@ -1,5 +1,8 @@
 import java.security.Key;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Задание по разработке - класс SquareBoard
@@ -20,23 +23,29 @@ public SquareBoard(int size){
     @Override
     public void fillBoard(List<Integer> list) {
 
+    board.putAll();
     }
 
-    /**
-     * @return
+    /** Возвращает список свободных ячеек
+     * @return keys - список ключей значение элементов которых равно null
      */
     @Override
     public List<Key> availableSpace() {
-        return List.of();
+        List<Key> keys = new ArrayList<Key>();
+        for(Map.Entry<Key, Integer> item : board.entrySet())
+        {
+            if (item.getValue()==null) keys.add(item.getKey());
+        }
+        return keys;
     }
 
-    /**
+    /** Устанавливает значение по ключу Key
      * @param key
      * @param value
      */
     @Override
     public void addItem(Key key, Integer value) {
-
+        board.put(key,value);
     }
 
     /**
@@ -55,7 +64,7 @@ public SquareBoard(int size){
      */
     @Override
     public Integer getValue(Key key) {
-        return 0;
+        return board.get(key);
     }
 
     /**
@@ -76,21 +85,30 @@ public SquareBoard(int size){
         return List.of();
     }
 
-    /**
+    /** Возвращает true если в коллекции есть значение value
      * @param value
-     * @return
+     * @return true/false
      */
     @Override
     public boolean hasValue(Integer value) {
-        return false;
+        return board.containsValue(value);
     }
 
-    /**
-     * @param keys
-     * @return
+    /** Возвращает список значений по списку ключей
+     * @param keys - список ключей
+     * @return returnValue - список значений указанных ключей
      */
     @Override
     public List<Integer> getValues(List<Key> keys) {
-        return List.of();
+        List<Integer> returnValues = new ArrayList<Integer>();
+        for (Key item:keys)
+        {   //Ошибка выдается если ключ не найден, в будущем переделать на throw exception
+            Integer value=board.get(item);
+            if (value==null)
+                System.out.println("В методе getValues() ключ не найден!");
+            else
+                returnValues.add(value);
+        }
+        return returnValues;
     }
 }
