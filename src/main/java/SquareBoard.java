@@ -1,6 +1,4 @@
-import java.security.Key;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,13 +15,20 @@ public SquareBoard(int size){
     super(size,size);
     this.size=size;}
 
-    /**
-     * @param list
+    /**Заполнение доски значениями из списка. Остаток добивается null-ами
+     * @param list список значений для заполнения
      */
     @Override
     public void fillBoard(List<Integer> list) {
-
-    board.putAll();
+        int counter = 0;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (counter >= list.size())
+                    board.put(new Key(i, j), null);
+                else
+                    board.put(new Key(i, j), list.get(counter));
+            }
+        }
     }
 
     /** Возвращает список свободных ячеек
@@ -48,41 +53,62 @@ public SquareBoard(int size){
         board.put(key,value);
     }
 
-    /**
+    /**Ищем и возвращаем ключ Key из заполненного board у которого параметры i и j
      * @param i
      * @param j
-     * @return
+     * @return ключ Key если такой найден или null если не найден
      */
     @Override
     public Key getKey(int i, int j) {
-        return null;
+        for(Map.Entry<Key, Integer> item : board.entrySet())
+        {
+            if (item.getKey().getI()==i&&item.getKey().getJ()==j)
+                return item.getKey();
+        }
+        return null; //возвращаем null сли ключа с такими параметрами нет
     }
 
-    /**
-     * @param key
-     * @return
+    /** Получение значения поля по ключу
+     * @param key - ключ для поиска
+     * @return значение или null если такого ключа нет
      */
     @Override
     public Integer getValue(Key key) {
-        return board.get(key);
+        if (board.get(key)==null)
+            return null;
+        else
+            return board.get(key);
     }
 
-    /**
-     * @param j
-     * @return
+    /**Значения в столбце
+     * @param j - столбец для поиска
+     * @return список ключей по столбцу j
      */
     @Override
     public List<Key> getColumn(int j) {
-        return List.of();
+        List<Key> resultColumns = new ArrayList<>();
+        for(Map.Entry<Key, Integer> item : board.entrySet())
+        {
+            if (item.getKey().getJ()==j)
+                resultColumns.add(item.getKey());
+        }
+
+        return resultColumns;
     }
 
-    /**
-     * @param i
-     * @return
+    /**Значения в строке
+     * @param i - строка для поиска
+     * @return лист ключей из строки i
      */
     @Override
     public List<Key> getRow(int i) {
-        return List.of();
+        List<Key> resultRows = new ArrayList<>();
+        for(Map.Entry<Key, Integer> item : board.entrySet())
+        {
+            if (item.getKey().getI()==i)
+                resultRows.add(item.getKey());
+        }
+        return resultRows;
     }
 
     /** Возвращает true если в коллекции есть значение value

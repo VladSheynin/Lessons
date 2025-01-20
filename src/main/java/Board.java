@@ -2,7 +2,6 @@
  * Задание по разработке - класс Board
  * @author Sheynin Vladislav
  */
-import java.security.Key;
 import java.util.*;
 
 public abstract class Board {
@@ -14,6 +13,7 @@ public abstract class Board {
     public Board(int weight, int height){this.weigh=weight;this.height=height;}
 
     public abstract void fillBoard(List<Integer> list);
+
 
     public abstract List<Key> availableSpace();
 
