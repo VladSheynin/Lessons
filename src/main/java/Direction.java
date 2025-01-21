@@ -1,5 +1,6 @@
 /**
  * Задание по разработке - Enum Direction - направления перемещения
+ *
  * @author Sheynin Vladislav
  */
 

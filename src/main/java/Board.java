@@ -1,15 +1,20 @@
 /**
  * Задание по разработке - класс Board
+ *
  * @author Sheynin Vladislav
  */
+
 import java.util.*;
 
 public abstract class Board {
-    int weigh;
-    int height;
+    private int weigh;
+    private int height;
     Map<Key, Integer> board = new HashMap<>();
 
-    public Board(int weight, int height){this.weigh=weight;this.height=height;}
+    public Board(int weight, int height) {
+        this.weigh = weight;
+        this.height = height;
+    }
 
     public abstract void fillBoard(List<Integer> list);
 

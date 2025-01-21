@@ -3,15 +3,19 @@ import java.util.Random;
 
 /**
  * Задание по разработке - класс SquareBoard
+ *
  * @author Sheynin Vladislav
  */
 
-public class Game2048 implements Game{
+public class Game2048 implements Game {
+
     GameHelper helper = new GameHelper();
     Board board;
     Random random = new Random();
 
-    public Game2048(Board board){this.board=board;}
+    public Game2048(Board board) {
+        this.board = board;
+    }
 
     @Override
     public void init() {

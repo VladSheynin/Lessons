@@ -16,6 +16,7 @@ public class HelperTest {
         assertEquals(helper.moveAndMergeEqual(asList(null, null, 2, 2)), asList(4, null, null, null));
 
     }
+
     public static void assertEquals(List list1, List list2) {
         if (!list1.equals(list2)) throw new RuntimeException("List1: " + list1 + " not equals List2: " + list2);
     }

@@ -1,5 +1,6 @@
 /**
  * Задание по разработке - класс Key
+ *
  * @author Sheynin Vladislav
  */
 
