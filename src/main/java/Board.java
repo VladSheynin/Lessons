@@ -9,11 +9,9 @@ public abstract class Board {
     int height;
     Map<Key, Integer> board = new HashMap<>();
 
-
     public Board(int weight, int height){this.weigh=weight;this.height=height;}
 
     public abstract void fillBoard(List<Integer> list);
-
 
     public abstract List<Key> availableSpace();
 

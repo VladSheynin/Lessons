@@ -20,13 +20,17 @@ public SquareBoard(int size){
      */
     @Override
     public void fillBoard(List<Integer> list) {
+        board.clear();
         int counter = 0;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (counter >= list.size())
                     board.put(new Key(i, j), null);
                 else
+                {
                     board.put(new Key(i, j), list.get(counter));
+                    counter++;
+                }
             }
         }
     }
@@ -87,12 +91,10 @@ public SquareBoard(int size){
     @Override
     public List<Key> getColumn(int j) {
         List<Key> resultColumns = new ArrayList<>();
-        for(Map.Entry<Key, Integer> item : board.entrySet())
+        for(int i=0;i<size;i++)
         {
-            if (item.getKey().getJ()==j)
-                resultColumns.add(item.getKey());
+            resultColumns.add(this.getKey(i,j));
         }
-
         return resultColumns;
     }
 
@@ -103,10 +105,9 @@ public SquareBoard(int size){
     @Override
     public List<Key> getRow(int i) {
         List<Key> resultRows = new ArrayList<>();
-        for(Map.Entry<Key, Integer> item : board.entrySet())
+        for(int j=0;j<size;j++)
         {
-            if (item.getKey().getI()==i)
-                resultRows.add(item.getKey());
+            resultRows.add(this.getKey(i,j));
         }
         return resultRows;
     }
