@@ -9,11 +9,20 @@ import java.util.*;
 public abstract class Board {
     private int weigh;
     private int height;
+
     Map<Key, Integer> board = new HashMap<>();
 
     public Board(int weight, int height) {
         this.weigh = weight;
         this.height = height;
+    }
+
+    public int getWeigh() {
+        return weigh;
+    }
+
+    public int getHeight() {
+        return height;
     }
 
     public abstract void fillBoard(List<Integer> list);
