@@ -6,11 +6,11 @@
 
 import java.util.*;
 
-public abstract class Board {
+public abstract class Board<K,V> {
     private int weigh;
     private int height;
 
-    Map<Key, Integer> board = new HashMap<>();
+    public Map<K, V> board = new HashMap<>();
 
     public Board(int weight, int height) {
         this.weigh = weight;
@@ -25,21 +25,21 @@ public abstract class Board {
         return height;
     }
 
-    public abstract void fillBoard(List<Integer> list);
+    public abstract void fillBoard(List<V> list);
 
-    public abstract List<Key> availableSpace();
+    public abstract List<K> availableSpace();
 
-    public abstract void addItem(Key key, Integer value);
+    public abstract void addItem(K key, V value);
 
-    public abstract Key getKey(int i, int j);
+    public abstract K getKey(int i, int j);
 
-    public abstract Integer getValue(Key key);
+    public abstract V getValue(K key);
 
-    public abstract List<Key> getColumn(int j);
+    public abstract List<K> getColumn(int j);
 
-    public abstract List<Key> getRow(int i);
+    public abstract List<K> getRow(int i);
 
-    public abstract boolean hasValue(Integer value);
+    public abstract boolean hasValue(V value);
 
-    public abstract List<Integer> getValues(List<Key> keys);
+    public abstract List<V> getValues(List<K> keys);
 }

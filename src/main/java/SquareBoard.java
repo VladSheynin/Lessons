@@ -2,13 +2,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * Задание по разработке - класс SquareBoard
  *
  * @author Sheynin Vladislav
  */
 
-public class SquareBoard extends Board {
+public class SquareBoard<V> extends Board<Key,V> {
 
     public SquareBoard(int size) {
         super(size, size);
@@ -21,7 +22,7 @@ public class SquareBoard extends Board {
      * @param list список значений для заполнения
      */
     @Override
-    public void fillBoard(List<Integer> list) {
+    public void fillBoard(List<V> list) {
         board.clear();
         int counter = 0;
         for (int i = 0; i < this.getWeigh(); i++) {
@@ -36,6 +37,7 @@ public class SquareBoard extends Board {
         }
     }
 
+
     /**
      * Возвращает список свободных ячеек
      *
@@ -44,11 +46,12 @@ public class SquareBoard extends Board {
     @Override
     public List<Key> availableSpace() {
         List<Key> keys = new ArrayList<Key>();
-        for (Map.Entry<Key, Integer> item : board.entrySet()) {
+        for (Map.Entry<Key, V> item : board.entrySet()) {
             if (item.getValue() == null) keys.add(item.getKey());
         }
         return keys;
     }
+
 
     /**
      * Устанавливает значение по ключу Key
@@ -57,7 +60,7 @@ public class SquareBoard extends Board {
      * @param value - устанавливаемое значение
      */
     @Override
-    public void addItem(Key key, Integer value) {
+    public void addItem(Key key, V value) {
         board.put(key, value);
     }
 
@@ -70,7 +73,7 @@ public class SquareBoard extends Board {
      */
     @Override
     public Key getKey(int i, int j) {
-        for (Map.Entry<Key, Integer> item : board.entrySet()) {
+        for (Map.Entry<Key, V> item : board.entrySet()) {
             if (item.getKey().getI() == i && item.getKey().getJ() == j)
                 return item.getKey();
         }
@@ -84,7 +87,7 @@ public class SquareBoard extends Board {
      * @return значение или null если такого ключа нет
      */
     @Override
-    public Integer getValue(Key key) {
+    public V getValue(Key key) {
         if (board.get(key) == null)
             return null;
         else
@@ -130,7 +133,7 @@ public class SquareBoard extends Board {
      * @return true/false
      */
     @Override
-    public boolean hasValue(Integer value) {
+    public boolean hasValue(V value) {
         return board.containsValue(value);
     }
 
@@ -141,10 +144,10 @@ public class SquareBoard extends Board {
      * @return returnValue - список значений указанных ключей
      */
     @Override
-    public List<Integer> getValues(List<Key> keys) {
-        List<Integer> returnValues = new ArrayList<Integer>();
+    public List<V> getValues(List<Key> keys) {
+        List<V> returnValues = new ArrayList<V>();
         for (Key item : keys) {   //Ошибка выдается если ключ не найден, в будущем переделать на throw exception
-            Integer value = board.get(item);
+            V value = board.get(item);
             if (value == null)
                 System.out.println("В методе getValues() ключ не найден!");
             else
