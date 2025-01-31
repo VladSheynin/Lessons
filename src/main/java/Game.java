@@ -12,7 +12,7 @@ public interface Game {
 
     void move(Direction direction);
 
-    void addItem();
+    void addItem(Key key, Integer value);
 
     Board getGameBoard();
 

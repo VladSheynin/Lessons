@@ -9,16 +9,59 @@ import java.util.Random;
 
 public class Game2048 implements Game {
 
+    public static final int GAME_SIZE = 4;
+    private final Board<Key, Integer> board = new SquareBoard<>(GAME_SIZE);
+    private final int percentForValue =10;
+
     GameHelper helper = new GameHelper();
-    Board board;
     Random random = new Random();
 
+
+    /*
+    Board board;
     public Game2048(Board board) {
         this.board = board;
+    }
+    */
+
+    public Game2048()
+    {
+        this.init();
     }
 
     @Override
     public void init() {
+        Integer value = this.getValue();
+        Key key = this.newRandomKey();
+        this.addItem(key, value);
+
+        value = this.getValue();
+        key = this.newRandomKey();
+        this.addItem(key, value);
+    }
+
+    /**
+     * Метод возвращает 2 или 4. Вероятность выпадения 4 -10%, 2 - 90%
+     * процент вероятности считается по меньшей величине и хранится в константе percentForValue
+     *
+     * @return значение для поля
+     */
+    private Integer getValue() {
+        if (random.nextInt(1, 101) <= percentForValue) return 4;
+        else return 2;
+    }
+
+    /**
+     * Создает новый случайный ключ
+     *
+     * @return новый ключ
+     */
+    private Key newRandomKey()
+    {
+        int x, y;
+        x= random.nextInt(4);
+        y= random.nextInt(4);
+        return new Key(x,y);
     }
 
     @Override
@@ -31,7 +74,9 @@ public class Game2048 implements Game {
     }
 
     @Override
-    public void addItem() {
+    public void addItem(Key key, Integer value) {
+        board.addItem(key,value);
+        board.toString();
     }
 
     @Override
