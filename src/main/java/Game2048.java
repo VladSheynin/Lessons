@@ -64,9 +64,18 @@ public class Game2048 implements Game {
         return new Key(x,y);
     }
 
+    /**
+     * Проверяем наличие свободных ячеек
+     *
+     * @return true если свободные ячейки есть
+     */
     @Override
     public boolean canMove() {
-        return false;
+        // если в board есть пустые ячейки
+        if (!board.availableSpace().isEmpty())
+            return true;
+        else
+            return false;
     }
 
     @Override
