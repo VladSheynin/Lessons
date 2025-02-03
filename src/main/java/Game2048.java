@@ -17,27 +17,34 @@ public class Game2048 implements Game {
     GameHelper helper = new GameHelper();
     Random random = new Random();
 
-
-    /*
-    Board board;
-    public Game2048(Board board) {
-        this.board = board;
-    }
-    */
-
     public Game2048() {
         this.init();
     }
 
     @Override
     public void init() {
-        Integer value = this.getValue();
-        Key key = this.newRandomKey();
-        this.addItem(key, value);
+        this.addItem();
+        this.addItem();
+    }
 
-        value = this.getValue();
-        key = this.newRandomKey();
-        this.addItem(key, value);
+    /**
+     * Добавляет новый элемент по ключу, проверяя что в поле ключа значение не равно null
+     * в случае если null в цикле ищет следующее пока не найдет подходящее
+     */
+    void addItem()
+    {
+        Integer value = this.initValue();
+        Key key = null;
+        while(true) {
+            key = this.newRandomKey();
+            if (board.getValue(key) == null) this.addItem(key, value);
+            break;
+        }
+    }
+
+    @Override
+    public void addItem(Key key, Integer value) {
+        board.addItem(key, value);
     }
 
     /**
@@ -46,7 +53,7 @@ public class Game2048 implements Game {
      *
      * @return значение для поля
      */
-    private Integer getValue() {
+    private Integer initValue() {
         if (random.nextInt(1, 101) <= percentForValue) return 4;
         else return 2;
     }
@@ -71,8 +78,7 @@ public class Game2048 implements Game {
     @Override
     public boolean canMove() {
         // если в board есть пустые ячейки
-        if (!board.availableSpace().isEmpty()) return true;
-        else return false;
+        return !board.availableSpace().isEmpty();
     }
 
     /**
@@ -161,25 +167,23 @@ public class Game2048 implements Game {
      */
     private List<Key> reverseKeys(List<Key> keys) {
         List<Key> resultList = new ArrayList<>();
-        for (int i = keys.size() - 1; i < 0; i++) {
+        for (int i = keys.size() - 1; i >= 0; i--) {
             resultList.add(keys.get(i));
         }
         return resultList;
     }
 
     @Override
-    public void addItem(Key key, Integer value) {
-        board.addItem(key, value);
-        board.toString();
-    }
-
-    @Override
     public Board getGameBoard() {
-        return null;
+        return board;
     }
 
+    /**
+     * Победой считается наличие хотя бы одного поля со значением 2048
+     * @return true если победа
+     */
     @Override
     public boolean hasWin() {
-        return false;
+        return board.hasValue(2048);
     }
 }

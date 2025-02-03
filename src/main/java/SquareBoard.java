@@ -25,8 +25,8 @@ public class SquareBoard<V> extends Board<Key,V> {
     public void fillBoard(List<V> list) {
         board.clear();
         int counter = 0;
-        for (int i = 0; i < this.getWeigh(); i++) {
-            for (int j = 0; j < this.getWeigh(); j++) {
+        for (int i = 0; i < this.getWidth(); i++) {
+            for (int j = 0; j < this.getWidth(); j++) {
                 if (counter >= list.size())
                     board.put(new Key(i, j), null);
                 else {
@@ -104,7 +104,7 @@ public class SquareBoard<V> extends Board<Key,V> {
     @Override
     public List<Key> getColumn(int j) {
         List<Key> resultColumns = new ArrayList<>();
-        for (int i = 0; i < this.getWeigh(); i++) {
+        for (int i = 0; i < this.getWidth(); i++) {
             resultColumns.add(this.getKey(i, j));
         }
         return resultColumns;
@@ -120,7 +120,7 @@ public class SquareBoard<V> extends Board<Key,V> {
     @Override
     public List<Key> getRow(int i) {
         List<Key> resultRows = new ArrayList<>();
-        for (int j = 0; j < this.getWeigh(); j++) {
+        for (int j = 0; j < this.getWidth(); j++) {
             resultRows.add(this.getKey(i, j));
         }
         return resultRows;
