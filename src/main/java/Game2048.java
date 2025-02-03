@@ -81,9 +81,12 @@ public class Game2048 implements Game {
      * @param direction - направление, нажата соответствующая кнопка
      */
     @Override
-    public void move(Direction direction) {
+    public boolean move(Direction direction) {
         List<Key> keysForMerge = new ArrayList<>(); //список ключей для сопоставления ключ-значение при отправке и получении списка значений в метод moveAndMergeEqual
         List<Integer> valuesForMerge = new ArrayList<>(); //список значений для отправки в метод moveAndMergeEqual
+        List<Integer> valuesForMergeResult = new ArrayList<>(); //список полученный из метода moveAndMergeEqual
+        int count = 0;
+        if (board.availableSpace().isEmpty()) return false; //если место на доске закончилось вернуть false
         switch (direction) {
             case Direction.UP: //получить ключи по столбцу и преобразовать их в обратном порядке для перебора снизу вверх, затем отправить в метод moveAndMergeEqual, потом залить значения на доску
             {
@@ -91,16 +94,22 @@ public class Game2048 implements Game {
                     keysForMerge = List.copyOf(board.getColumn(i));
                     keysForMerge = this.reverseKeys(keysForMerge);
                     valuesForMerge = board.getValues(keysForMerge);
-                    valuesForMerge = helper.moveAndMergeEqual(valuesForMerge);
-                    this.updateLine(keysForMerge, valuesForMerge);
+                    valuesForMergeResult = helper.moveAndMergeEqual(valuesForMerge);
+                    if (!valuesForMerge.equals(valuesForMergeResult)) { //проверяем сделан ли ход, если списки не равны - сделан
+                        this.updateLine(keysForMerge, valuesForMerge);
+                        count++;
+                    }
                 }
             }
             case Direction.DOWN: {//получить ключи по столбцу, затем отправить в метод moveAndMergeEqual, потом залить значения на доску
                 for (int i = 0; i < board.getHeight(); i++) {
                     keysForMerge = List.copyOf(board.getColumn(i));
                     valuesForMerge = board.getValues(keysForMerge);
-                    valuesForMerge = helper.moveAndMergeEqual(valuesForMerge);
-                    this.updateLine(keysForMerge, valuesForMerge);
+                    valuesForMergeResult = helper.moveAndMergeEqual(valuesForMerge);
+                    if (!valuesForMerge.equals(valuesForMergeResult)) { //проверяем сделан ли ход, если списки не равны - сделан
+                        this.updateLine(keysForMerge, valuesForMerge);
+                        count++;
+                    }
                 }
             }
             case Direction.LEFT: {//получить ключи по строке и преобразовать их в обратном порядке ...
@@ -108,19 +117,26 @@ public class Game2048 implements Game {
                     keysForMerge = List.copyOf(board.getRow(i));
                     keysForMerge = this.reverseKeys(keysForMerge);
                     valuesForMerge = board.getValues(keysForMerge);
-                    valuesForMerge = helper.moveAndMergeEqual(valuesForMerge);
-                    this.updateLine(keysForMerge, valuesForMerge);
+                    valuesForMergeResult = helper.moveAndMergeEqual(valuesForMerge);
+                    if (!valuesForMerge.equals(valuesForMergeResult)) { //проверяем сделан ли ход, если списки не равны - сделан
+                        this.updateLine(keysForMerge, valuesForMerge);
+                        count++;
+                    }
                 }
             }
             case Direction.RIGHT: {//получить ключи по строке ...
                 for (int i = 0; i < board.getWidth(); i++) {
                     keysForMerge = List.copyOf(board.getRow(i));
                     valuesForMerge = board.getValues(keysForMerge);
-                    valuesForMerge = helper.moveAndMergeEqual(valuesForMerge);
-                    this.updateLine(keysForMerge, valuesForMerge);
+                    valuesForMergeResult = helper.moveAndMergeEqual(valuesForMerge);
+                    if (!valuesForMerge.equals(valuesForMergeResult)) { //проверяем сделан ли ход, если списки не равны - сделан
+                        this.updateLine(keysForMerge, valuesForMerge);
+                        count++;
+                    }
                 }
             }
         }
+        return count != 0; //если были изменения на доске (ход сделан) вернуть true
     }
 
     /**
