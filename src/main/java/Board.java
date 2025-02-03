@@ -7,18 +7,18 @@
 import java.util.*;
 
 public abstract class Board<K,V> {
-    private int weigh;
+    private int width;
     private int height;
 
     public Map<K, V> board = new HashMap<>();
 
-    public Board(int weight, int height) {
-        this.weigh = weight;
+    public Board(int width, int height) {
+        this.width = width;
         this.height = height;
     }
 
-    public int getWeigh() {
-        return weigh;
+    public int getWidth() {
+        return width;
     }
 
     public int getHeight() {
