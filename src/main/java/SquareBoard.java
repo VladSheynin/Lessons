@@ -35,7 +35,6 @@ public class SquareBoard<V> extends Board<Key, V> {
         }
     }
 
-
     /**
      * Возвращает список свободных ячеек
      *
@@ -49,7 +48,6 @@ public class SquareBoard<V> extends Board<Key, V> {
         }
         return keys;
     }
-
 
     /**
      * Устанавливает значение по ключу Key
@@ -146,4 +144,19 @@ public class SquareBoard<V> extends Board<Key, V> {
         }
         return returnValues;
     }
+
+    @Override
+    public String toString()
+    {
+        String str = "";
+        for (int i = 0; i < this.getWidth(); i++) {
+            for (V element: this.getValues(getRow(i))) {
+                str = str + element + "--";
+            }
+            str = str + "\n";
+        }
+        System.out.println(str);
+        return str;
+    }
+
 }

@@ -95,7 +95,7 @@ public class Game2048 implements Game {
         int count = 0;
         if (board.availableSpace().isEmpty()) return false; //если место на доске закончилось вернуть false
         switch (direction) {
-            case Direction.UP: //получить ключи по столбцу и преобразовать их в обратном порядке для перебора снизу вверх, затем отправить в метод moveAndMergeEqual, потом залить значения на доску
+            case Direction.DOWN: //получить ключи по столбцу и преобразовать их в обратном порядке для перебора снизу вверх, затем отправить в метод moveAndMergeEqual, потом залить значения на доску
             {
                 for (int i = 0; i < board.getHeight(); i++) {
                     keysForMerge = List.copyOf(board.getColumn(i));
@@ -107,8 +107,9 @@ public class Game2048 implements Game {
                         count++;
                     }
                 }
+                break;
             }
-            case Direction.DOWN: {//получить ключи по столбцу, затем отправить в метод moveAndMergeEqual, потом залить значения на доску
+            case Direction.UP: {//получить ключи по столбцу, затем отправить в метод moveAndMergeEqual, потом залить значения на доску
                 for (int i = 0; i < board.getHeight(); i++) {
                     keysForMerge = List.copyOf(board.getColumn(i));
                     valuesForMerge = board.getValues(keysForMerge);
@@ -118,8 +119,9 @@ public class Game2048 implements Game {
                         count++;
                     }
                 }
+                break;
             }
-            case Direction.LEFT: {//получить ключи по строке и преобразовать их в обратном порядке ...
+            case Direction.RIGHT: {//получить ключи по строке и преобразовать их в обратном порядке ...
                 for (int i = 0; i < board.getWidth(); i++) {
                     keysForMerge = List.copyOf(board.getRow(i));
                     keysForMerge = this.reverseKeys(keysForMerge);
@@ -130,8 +132,9 @@ public class Game2048 implements Game {
                         count++;
                     }
                 }
+                break;
             }
-            case Direction.RIGHT: {//получить ключи по строке ...
+            case Direction.LEFT: {//получить ключи по строке ...
                 for (int i = 0; i < board.getWidth(); i++) {
                     keysForMerge = List.copyOf(board.getRow(i));
                     valuesForMerge = board.getValues(keysForMerge);
@@ -142,6 +145,7 @@ public class Game2048 implements Game {
                     }
                 }
             }
+            break;
         }
         return count != 0; //если были изменения на доске (ход сделан) вернуть true
     }

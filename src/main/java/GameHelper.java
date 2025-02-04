@@ -47,8 +47,8 @@ public class GameHelper {
             }
         }
         if (lastFlag) resultArrayList.add(element1);
-
-        for (int i = 0; i <= sizeNotNullList - resultArrayList.size(); i++) {
+        int addNull = sizeNotNullList - resultArrayList.size();
+        for (int i = 0; i <= addNull; i++) {
             resultArrayList.add(null);
         }
         return resultArrayList;

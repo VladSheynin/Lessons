@@ -57,9 +57,17 @@ public class Game2048Test {
         };
         Board<Key, Integer> b = game.getGameBoard();
         if (!b.availableSpace().isEmpty()) throw new RuntimeException("Game board must be empty before initialize");
-        b.fillBoard(asList(2, null, null, 8, 2, 2, 8, 8, 2, null, 2, 2, 4, 2, 4, 2048));
+        b.fillBoard(asList(2, null, null, 8,
+                           2, 2, 8, 8,
+                           2, null, 2, 2,
+                           4, 2, 4, 2048));
         if (!game.hasWin()) throw new RuntimeException("hasWin not work =(");
-        game.move(Direction.LEFT);
+
+        game.getGameBoard().toString();
+        game.move(Direction.UP);
+        game.getGameBoard().toString();
+
+
         if (b.availableSpace().size() != 5) throw new RuntimeException("move must be add item");
         assertLists(b.getValues(b.getRow(0)).subList(0, 2), asList(2, 8));
         assertLists(b.getValues(b.getRow(1)).subList(0, 2), asList(4, 16));
