@@ -23,6 +23,8 @@ public class SquareBoard<V> extends Board<Key, V> {
     @Override
     public void fillBoard(List<V> list) {
         board.clear();
+        if (list.size() > (this.getWidth() * this.getWidth()))
+            throw new RuntimeException("Ошибка инициализации приложения - слишком длинный список (больше размера доски)"); //run-time exceptions если входной список длиннее чем размер доски (квадрат ширины)
         int counter = 0;
         for (int i = 0; i < this.getWidth(); i++) {
             for (int j = 0; j < this.getWidth(); j++) {
@@ -148,11 +150,10 @@ public class SquareBoard<V> extends Board<Key, V> {
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         String str = "";
         for (int i = 0; i < this.getWidth(); i++) {
-            for (V element: this.getValues(getRow(i))) {
+            for (V element : this.getValues(getRow(i))) {
                 str = str + element + "--";
             }
             str = str + "\n";
