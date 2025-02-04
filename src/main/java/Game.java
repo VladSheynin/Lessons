@@ -13,6 +13,7 @@ public interface Game {
     boolean move(Direction direction);
 
     void addItem(Key key, Integer value);
+    void addItem();
 
     Board getGameBoard();
 

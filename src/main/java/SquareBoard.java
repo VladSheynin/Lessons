@@ -2,14 +2,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-
 /**
  * Задание по разработке - класс SquareBoard
  *
  * @author Sheynin Vladislav
  */
 
-public class SquareBoard<V> extends Board<Key,V> {
+public class SquareBoard<V> extends Board<Key, V> {
 
     public SquareBoard(int size) {
         super(size, size);
@@ -27,8 +26,7 @@ public class SquareBoard<V> extends Board<Key,V> {
         int counter = 0;
         for (int i = 0; i < this.getWidth(); i++) {
             for (int j = 0; j < this.getWidth(); j++) {
-                if (counter >= list.size())
-                    board.put(new Key(i, j), null);
+                if (counter >= list.size()) board.put(new Key(i, j), null);
                 else {
                     board.put(new Key(i, j), list.get(counter));
                     counter++;
@@ -74,8 +72,7 @@ public class SquareBoard<V> extends Board<Key,V> {
     @Override
     public Key getKey(int i, int j) {
         for (Map.Entry<Key, V> item : board.entrySet()) {
-            if (item.getKey().getI() == i && item.getKey().getJ() == j)
-                return item.getKey();
+            if (item.getKey().getI() == i && item.getKey().getJ() == j) return item.getKey();
         }
         return null; //возвращаем null сли ключа с такими параметрами нет
     }
@@ -88,10 +85,8 @@ public class SquareBoard<V> extends Board<Key,V> {
      */
     @Override
     public V getValue(Key key) {
-        if (board.get(key) == null)
-            return null;
-        else
-            return board.get(key);
+        if (board.get(key) == null) return null;
+        else return board.get(key);
     }
 
     /**
@@ -146,14 +141,9 @@ public class SquareBoard<V> extends Board<Key,V> {
     @Override
     public List<V> getValues(List<Key> keys) {
         List<V> returnValues = new ArrayList<V>();
-        for (Key item : keys) {   //Ошибка выдается если ключ не найден, в будущем переделать на throw exception
-            V value = board.get(item);
-            if (value == null)
-                System.out.println("В методе getValues() ключ не найден!");
-            else
-                returnValues.add(value);
+        for (Key item : keys) {
+            returnValues.add(this.getValue(item));
         }
         return returnValues;
     }
-
 }

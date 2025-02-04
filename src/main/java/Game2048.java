@@ -31,7 +31,8 @@ public class Game2048 implements Game {
      * Добавляет новый элемент по ключу, проверяя что в поле ключа значение не равно null
      * в случае если null в цикле ищет следующее пока не найдет подходящее
      */
-    void addItem()
+    @Override
+    public void addItem()
     {
         Integer value = this.initValue();
         Key key = null;
@@ -102,7 +103,7 @@ public class Game2048 implements Game {
                     valuesForMerge = board.getValues(keysForMerge);
                     valuesForMergeResult = helper.moveAndMergeEqual(valuesForMerge);
                     if (!valuesForMerge.equals(valuesForMergeResult)) { //проверяем сделан ли ход, если списки не равны - сделан
-                        this.updateLine(keysForMerge, valuesForMerge);
+                        this.updateLine(keysForMerge, valuesForMergeResult);
                         count++;
                     }
                 }
@@ -113,7 +114,7 @@ public class Game2048 implements Game {
                     valuesForMerge = board.getValues(keysForMerge);
                     valuesForMergeResult = helper.moveAndMergeEqual(valuesForMerge);
                     if (!valuesForMerge.equals(valuesForMergeResult)) { //проверяем сделан ли ход, если списки не равны - сделан
-                        this.updateLine(keysForMerge, valuesForMerge);
+                        this.updateLine(keysForMerge, valuesForMergeResult);
                         count++;
                     }
                 }
@@ -125,7 +126,7 @@ public class Game2048 implements Game {
                     valuesForMerge = board.getValues(keysForMerge);
                     valuesForMergeResult = helper.moveAndMergeEqual(valuesForMerge);
                     if (!valuesForMerge.equals(valuesForMergeResult)) { //проверяем сделан ли ход, если списки не равны - сделан
-                        this.updateLine(keysForMerge, valuesForMerge);
+                        this.updateLine(keysForMerge, valuesForMergeResult);
                         count++;
                     }
                 }
@@ -136,7 +137,7 @@ public class Game2048 implements Game {
                     valuesForMerge = board.getValues(keysForMerge);
                     valuesForMergeResult = helper.moveAndMergeEqual(valuesForMerge);
                     if (!valuesForMerge.equals(valuesForMergeResult)) { //проверяем сделан ли ход, если списки не равны - сделан
-                        this.updateLine(keysForMerge, valuesForMerge);
+                        this.updateLine(keysForMerge, valuesForMergeResult);
                         count++;
                     }
                 }
