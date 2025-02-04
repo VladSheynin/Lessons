@@ -42,4 +42,5 @@ public abstract class Board<K,V> {
     public abstract boolean hasValue(V value);
 
     public abstract List<V> getValues(List<K> keys);
+
 }

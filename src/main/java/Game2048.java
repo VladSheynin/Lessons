@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static java.util.Arrays.asList;
+
 /**
  * Задание по разработке - класс SquareBoard
  *
@@ -18,11 +20,12 @@ public class Game2048 implements Game {
     Random random = new Random();
 
     public Game2048() {
-        this.init();
+        //this.init();
     }
 
     @Override
     public void init() {
+        board.fillBoard(asList(null, null, null, null,null, null, null, null,null, null, null, null,null, null, null, null));
         this.addItem();
         this.addItem();
     }
@@ -32,14 +35,15 @@ public class Game2048 implements Game {
      * в случае если null в цикле ищет следующее пока не найдет подходящее
      */
     @Override
-    public void addItem()
-    {
+    public void addItem() {
         Integer value = this.initValue();
         Key key = null;
-        while(true) {
+        while (true) {
             key = this.newRandomKey();
-            if (board.getValue(key) == null) this.addItem(key, value);
-            break;
+            if (board.getValue(key) == null) {
+                this.addItem(key, value);
+                break;
+            }
         }
     }
 
@@ -147,7 +151,10 @@ public class Game2048 implements Game {
             }
             break;
         }
-        return count != 0; //если были изменения на доске (ход сделан) вернуть true
+        if (count != 0) { //если были изменения на доске (ход сделан) вернуть true и добавить элемент на доску
+            this.addItem();
+            return true;
+        } else return false;
     }
 
     /**
@@ -185,6 +192,7 @@ public class Game2048 implements Game {
 
     /**
      * Победой считается наличие хотя бы одного поля со значением 2048
+     *
      * @return true если победа
      */
     @Override
