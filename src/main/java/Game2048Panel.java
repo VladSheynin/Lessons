@@ -1,5 +1,3 @@
-//package ru.sbrf.game2048;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;

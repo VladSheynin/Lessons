@@ -5,7 +5,7 @@ public class PlayGame {
         JFrame game = new JFrame();
         game.setTitle("2048 Game");
         game.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        game.setSize(340, 360);
+        game.setSize(350, 380);
         game.setResizable(false);
 
         game.add(new Game2048Panel());
