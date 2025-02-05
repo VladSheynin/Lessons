@@ -19,8 +19,8 @@ public class GameHelper {
     List<Integer> moveAndMergeEqual(List<Integer> list) {
         int sizeNotNullList = list.size();
         List<Integer> resultArrayList = new ArrayList<>();
-        if (list.isEmpty()) return list; //если список исходно был пустой - возвращаем сам этот список
         list.removeIf(Objects::isNull);
+        if (list.isEmpty()) return list; //если список исходно был пустой - возвращаем сам этот список
         Iterator<Integer> listIterator = list.iterator();
         Integer element1 = listIterator.next();
         boolean lastFlag = false;//если окажется что данный элемент последний, то при выходе из цикла нужно его добавить в список
