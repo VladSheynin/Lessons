@@ -40,17 +40,12 @@ public class Key {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         Key other = (Key) obj;
-        if (i != other.i)
-            return false;
-        if (j != other.j)
-            return false;
+        if (i != other.i) return false;
+        if (j != other.j) return false;
         return true;
     }
 }

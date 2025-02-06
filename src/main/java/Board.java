@@ -4,12 +4,13 @@
  * @author Sheynin Vladislav
  */
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public abstract class Board<K,V> {
-    private int width;
-    private int height;
-
+public abstract class Board<K, V> {
+    private final int width;
+    private final int height;
     public Map<K, V> board = new HashMap<>();
 
     public Board(int width, int height) {

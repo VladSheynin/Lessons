@@ -85,10 +85,8 @@ public class SquareBoard<V> extends Board<Key, V> {
      */
     @Override
     public V getValue(Key key) {
-        if (board.get(key) == null)
-            return null;
-        else
-            return board.get(key);
+        if (board.get(key) == null) return null;
+        else return board.get(key);
     }
 
     /**
