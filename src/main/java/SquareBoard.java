@@ -147,16 +147,21 @@ public class SquareBoard<V> extends Board<Key, V> {
         return returnValues;
     }
 
+    /**
+     * Переопределлыенный метод toString, используется для целей отладки
+     *
+     * @return строку со значениями доски (в виде таблицы)
+     */
     @Override
     public String toString() {
-        String str = "";
+        StringBuilder str = new StringBuilder();
         for (int i = 0; i < this.getWidth(); i++) {
             for (V element : this.getValues(getRow(i))) {
-                str = str + element + "--";
+                str.append(element).append("--");
             }
-            str = str + "\n";
+            str.append("\n");
         }
-        return str;
+        return str.toString();
     }
 
 }

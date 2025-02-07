@@ -43,7 +43,6 @@ public class GameHelper {
                     resultArrayList.add(element1);
                     element1 = item;
                 }
-
             }
         }
         if (lastFlag) resultArrayList.add(element1);
@@ -54,5 +53,4 @@ public class GameHelper {
         }
         return resultArrayList;
     }
-
 }

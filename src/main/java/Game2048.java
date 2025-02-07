@@ -14,8 +14,8 @@ public class Game2048 implements Game {
     private final Board<Key, Integer> board = new SquareBoard<>(GAME_SIZE);
     private final int percentForValue = 10;
 
-    GameHelper helper = new GameHelper();
-    Random random = new Random();
+    private final GameHelper helper = new GameHelper();
+    private final Random random = new Random();
 
     public Game2048() {
         //this.init();
@@ -185,15 +185,14 @@ public class Game2048 implements Game {
             this.addItem();
             return true;
         }
-        if (canMove()) return true;
-        else return false;
+        return canMove();
     }
 
     /**
      * Обновление доски по паре ключ/значение
      *
-     * @param keys
-     * @param values
+     * @param keys   - список ключей для обновления значений
+     * @param values - список значений, соответствующих по порядку, ключу
      */
     private void updateLine(List<Key> keys, List<Integer> values) {
         int i = 0;

@@ -4,6 +4,13 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 // drawing based on https://github.com/bulenkov/2048
+
+/**
+ * Класс реализующие графику и логику работы с ней
+ * взято с <a href="https://gist.github.com/CoolXaleX/ca5731db01808a84f4f612e66cd9f929">...</a>
+ * не изменялось
+ */
+
 public class Game2048Panel extends JPanel {
     private static final Color BG_COLOR = new Color(0xbbada0);
     private static final String FONT_NAME = "Arial";
@@ -61,6 +68,10 @@ public class Game2048Panel extends JPanel {
             }
         });
         game.init();
+    }
+
+    private static int offsetCoors(int arg) {
+        return arg * (TILES_MARGIN + TILE_SIZE) + TILES_MARGIN;
     }
 
     @Override
@@ -151,10 +162,6 @@ public class Game2048Panel extends JPanel {
 
     public Color getForeground(int value) {
         return value < 16 ? new Color(0x776e65) : new Color(0xf9f6f2);
-    }
-
-    private static int offsetCoors(int arg) {
-        return arg * (TILES_MARGIN + TILE_SIZE) + TILES_MARGIN;
     }
 
 }
