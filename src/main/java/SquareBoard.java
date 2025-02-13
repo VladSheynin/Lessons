@@ -28,11 +28,8 @@ public class SquareBoard<V> extends Board<Key, V> {
         int counter = 0;
         for (int i = 0; i < this.getWidth(); i++) {
             for (int j = 0; j < this.getWidth(); j++) {
-                if (counter >= list.size()) board.put(new Key(i, j), null);
-                else {
-                    board.put(new Key(i, j), list.get(counter));
-                    counter++;
-                }
+                board.put(new Key(i, j), list.get(counter));
+                counter++;
             }
         }
     }

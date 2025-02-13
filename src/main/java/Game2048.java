@@ -68,8 +68,8 @@ public class Game2048 implements Game {
      */
     private Key newRandomKey() {
         int x, y;
-        x = random.nextInt(4);
-        y = random.nextInt(4);
+        x = random.nextInt(GAME_SIZE);
+        y = random.nextInt(GAME_SIZE);
         return new Key(x, y);
     }
 
