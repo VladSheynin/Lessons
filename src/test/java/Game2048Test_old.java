@@ -3,7 +3,7 @@ import java.lang.*;
 
 import static java.util.Arrays.asList;
 
-public class Game2048Test {
+public class Game2048Test_old {
     private final static Game game = new Game2048();
 
     public static void main(String[] args) {

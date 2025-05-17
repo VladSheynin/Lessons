@@ -1,4 +1,4 @@
-public class TestClass {
+public class TestClass_old {
     public static void main(String[] args) {
 
         //Board board = new SquareBoard(4);

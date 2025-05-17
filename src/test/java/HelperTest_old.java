@@ -2,7 +2,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
-public class HelperTest {
+public class HelperTest_old {
     private final static GameHelper helper = new GameHelper();
 
     public static void main(String[] args) {
