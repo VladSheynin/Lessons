@@ -8,16 +8,16 @@ import static java.util.Arrays.asList;
 
 class SquareBoardTest {
 
-    Board<Key, Integer> squareBard = new SquareBoard<>(2);
+    private final Board<Key, Integer> squareBard = new SquareBoard<>(2);
 
     @Test
-    void SsqureBoarInitTest() {
+    void initTest() {
         squareBard.fillBoard(asList(1, 2, 3, 4));
         Assertions.assertEquals(3, squareBard.getValue(squareBard.getKey(1, 0)));
     }
 
     @Test
-    void SquareBoardAddItemTest() {
+    void addItemTest() {
         squareBard.fillBoard(asList(0, 0, 0, null));
         squareBard.addItem(new Key(1, 1), 2);
         Assertions.assertEquals(2, squareBard.getValue(new Key(1, 1)));

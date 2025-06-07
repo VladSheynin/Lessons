@@ -9,7 +9,7 @@ import static java.util.Arrays.asList;
 
 class GameHelperTest {
 
-    GameHelper gameHelper = new GameHelper();
+    private final GameHelper gameHelper = new GameHelper();
 
     @Test
     void moveAndMergeEqualTest() {
