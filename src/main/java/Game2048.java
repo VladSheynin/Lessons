@@ -14,7 +14,7 @@ public class Game2048 implements Game {
     private final Board<Key, Integer> board = new SquareBoard<>(GAME_SIZE);
     private final int percentForValue = 10;
 
-    private final GameHelper helper = new GameHelper();
+    private  GameHelper helper = new GameHelper();
     private final Random random = new Random();
 
     public Game2048() {

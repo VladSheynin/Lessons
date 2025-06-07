@@ -71,7 +71,7 @@ public class SquareBoard<V> extends Board<Key, V> {
         for (Map.Entry<Key, V> item : board.entrySet()) {
             if (item.getKey().getI() == i && item.getKey().getJ() == j) return item.getKey();
         }
-        return null; //возвращаем null сли ключа с такими параметрами нет
+        return null; //возвращаем null если ключа с такими параметрами нет
     }
 
     /**
@@ -88,7 +88,7 @@ public class SquareBoard<V> extends Board<Key, V> {
 
     /**
      * Возврат всех ключей в столбце
-     * вызов getWeiht используется для получения глубины доски (так как ширина и глубина одинаковые)
+     * вызов getWidth используется для получения глубины доски (так как ширина и глубина одинаковые)
      *
      * @param j - столбец для поиска
      * @return список ключей по столбцу j
@@ -104,7 +104,7 @@ public class SquareBoard<V> extends Board<Key, V> {
 
     /**
      * Возврат всех ключей в строке
-     * вызов getWeiht используется для получения глубины доски (так как ширина и глубина одинаковые)
+     * вызов getWidth используется для получения глубины доски (так как ширина и глубина одинаковые)
      *
      * @param i - строка для поиска
      * @return лист ключей из строки i
