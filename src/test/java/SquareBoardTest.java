@@ -1,8 +1,9 @@
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.List;
+
 import static java.util.Arrays.asList;
 
 class SquareBoardTest {
@@ -43,38 +44,38 @@ class SquareBoardTest {
     @Test
     void getValuesTest() {
         squareBard.fillBoard(asList(0, 1, 2, 3));
-        Assertions.assertEquals(Arrays.asList(0,3),squareBard.getValues(Arrays.asList(new Key(0,0), new Key(1,1))));
+        Assertions.assertEquals(Arrays.asList(0, 3), squareBard.getValues(Arrays.asList(new Key(0, 0), new Key(1, 1))));
     }
 
     @Test
     void getColumnTest() {
         squareBard.fillBoard(asList(0, 1, 2, 3));
-        Assertions.assertEquals(asList(new Key(0,1),new Key(1,1)),squareBard.getColumn(1));
+        Assertions.assertEquals(asList(new Key(0, 1), new Key(1, 1)), squareBard.getColumn(1));
     }
 
     @Test
     void getRowTest() {
         squareBard.fillBoard(asList(0, 1, 2, 3));
-        Assertions.assertEquals(asList(new Key(0,0),new Key(0,1)),squareBard.getRow(0));
+        Assertions.assertEquals(asList(new Key(0, 0), new Key(0, 1)), squareBard.getRow(0));
     }
 
     @Test
     void getKeyIfNullTest() {
         squareBard.fillBoard(asList(0, 1, 2, 3));
-        Assertions.assertNull(squareBard.getKey(2,2));
+        Assertions.assertNull(squareBard.getKey(2, 2));
     }
 
     @Test
     void getValueIfNullTest() {
         squareBard.fillBoard(asList(0, 1, 2, 3));
-        Assertions.assertNull(squareBard.getValue(new Key(2,2)));
+        Assertions.assertNull(squareBard.getValue(new Key(2, 2)));
     }
 
     @Test
-    void toStringTest(){
+    void toStringTest() {
         //фактически заглушка так как смысла в тестировании нет, но хочется Coverage 100% :)
         squareBard.fillBoard(asList(0, 1, 2, 3));
-        Assertions.assertEquals("0--1--\n2--3--\n",squareBard.toString());
+        Assertions.assertEquals("0--1--\n2--3--\n", squareBard.toString());
     }
 
 }
